@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио монтажёра</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="nav">
+        <div class="logo">R</div>
+
+        <div class="nav-links">
+            <a href="#projects">Проекты</a>
+            <a href="#contact">Контакты</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-position">
+        <div class="hero-content">
+
+            <div class="title-position">
+                <h1 class="hero-title title-anim">
+                    <span class="word">Монтаж,</span>
+                    <span class="word">который</span>
+                    <span class="word">приносит</span><br>
+                    <span class="word">результат.</span>
+                </h1>
+            </div>
+
+            <div class="subtitle-position">
+                <p class="hero-subtitle subtitle-anim">
+                    <span class="sub-word">Больше</span>
+                    <span class="sub-word">удержания,</span>
+                    <span class="sub-word">охватов</span>
+                    <span class="sub-word">и</span>
+                    <span class="sub-word">клиентов.</span>
+                </p>
+            </div>
+
+            <div class="buttons-position">
+                <div class="hero-buttons buttons-anim">
+                    <a href="https://t.me/r_enta" target="_blank" rel="noopener noreferrer" class="btn-primary">Заказать монтаж</a>
+                    <a href="#projects" class="btn-secondary">Примеры работ</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="scroll-position">
+        <div class="scroll-block">
+            <span class="scroll-text scroll-left scroll-anim">Листайте вниз</span>
+            <div class="line"></div>
+
+            <div class="mouse-wrap">
+                <div class="mouse mouse-anim"></div>
+            </div>
+
+            <div class="line"></div>
+            <span class="scroll-text scroll-right scroll-anim">чтобы посмотреть проекты</span>
+        </div>
+    </div>
+</section>
+
+<div class="content-shell">
+    <section id="projects" class="projects">
+        <div class="projects-container">
+
+            <div class="projects-heading">
+                <div class="projects-top-row">
+                    <div class="projects-top-left">
+                        <h2 class="projects-small-title">Примеры работ</h2>
+                        <div class="projects-arrow-circle">
+                            ↓
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-divider"></div>
+
+                <p class="projects-big-text">
+                    Монтаж коротких видео для<br>
+                    Reels, TikTok и Shorts
+                </p>
+            </div>
+
+            <div class="projects-gallery">
+
+                <div class="video-item" data-video="Videos/Video1.mp4">
+                    <video src="Videos/Video1.mp4" muted playsinline preload="metadata" loop></video>
+                </div>
+
+                <div class="video-item" data-video="Videos/Video2.mp4">
+                    <video src="Videos/Video2.mp4" muted playsinline preload="metadata" loop></video>
+                </div>
+
+                <div class="video-item" data-video="Videos/Video3.mp4">
+                    <video src="Videos/Video3.mp4" muted playsinline preload="metadata" loop></video>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-container">
+
+            <div class="about-top">
+                <div class="about-text">
+                    <h2 class="about-title">Это Renta</h2>
+
+                    <p class="about-description">
+                        Привет, меня зовут Renta — я видеомонтажёр с опытом более 1 года,
+                        специализирующийся на коротких видео для Reels, TikTok и Shorts.
+                        Делаю видео для экспертов и блогеров, которые удерживают внимание,
+                        набирают охваты и приводят клиентов.
+                        Моя цель — чтобы ваши видео работали на результат.
+                    </p>
+                </div>
+
+                <div class="about-image-wrap">
+                    <div class="about-image-card">
+                        <img src="Photos/Photo1.jpg" alt="Фото Renta">
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-divider"></div>
+
+            <div class="about-tools">
+                <div class="about-tool">Premiere pro</div>
+                <div class="about-tool">After Effects</div>
+                <div class="about-tool">Capcut</div>
+                <div class="about-tool">Photoshop</div>
+                <div class="about-tool">DaVinci</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+
+            <div class="contact-top">
+                <div class="contact-badge">
+                    <span class="contact-badge-dot"></span>
+                    Готов к работе
+                </div>
+            </div>
+
+            <h2 class="contact-title">
+                Готовы обсудить проект<br>
+                и сделать контент, который даст результат?
+            </h2>
+
+            <div class="contact-socials">
+                <a href="https://instagram.com/renta_montage" target="_blank" aria-label="Instagram" class="contact-social">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+                        <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/>
+                        <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/>
+                    </svg>
+                </a>
+
+                <span class="contact-social-divider"></span>
+
+                <a href="https://t.me/r_enta" target="_blank" aria-label="Telegram" class="contact-social">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M21 4L3.8 10.6C2.8 11 2.81 11.57 3.62 11.81L8.03 13.19L17.8 7.02C18.26 6.74 18.68 6.89 18.33 7.2L10.41 14.35V18.25C10.41 18.81 10.73 19.02 11.12 18.72L13.66 16.27L17.63 19.2C18.36 19.6 18.88 19.39 19.06 18.52L22 5.42C22.27 4.35 21.59 3.87 21 4Z"
+                              stroke="currentColor"
+                              stroke-width="1.4"
+                              stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="contact-bottom">
+                <a href="mailto:gafarovilnar8@gmail.com" class="contact-email">gafarovilnar8@gmail.com</a>
+                <div class="contact-copy">© 2026 Renta. Все права защищены.</div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<div class="video-modal" id="videoModal">
+    <div class="video-modal-backdrop"></div>
+
+    <div class="video-modal-content">
+        <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть">×</button>
+        <video id="modalVideo" controls playsinline></video>
+    </div>
+</div>
+
+<script>
+const items = document.querySelectorAll('.video-item');
+const modal = document.getElementById('videoModal');
+const modalVideo = document.getElementById('modalVideo');
+const modalClose = document.getElementById('videoModalClose');
+const modalBackdrop = document.querySelector('.video-modal-backdrop');
+
+items.forEach(item => {
+    const previewVideo = item.querySelector('video');
+    const fullVideoSrc = item.dataset.video;
+
+    item.addEventListener('mouseenter', () => {
+        previewVideo.currentTime = 0;
+        const playPromise = previewVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+        }
+    });
+
+    item.addEventListener('mouseleave', () => {
+        previewVideo.pause();
+        previewVideo.currentTime = 0;
+    });
+
+    item.addEventListener('click', () => {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        modalVideo.src = fullVideoSrc;
+        modalVideo.currentTime = 0;
+        modalVideo.muted = false;
+
+        const playPromise = modalVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+        }
+    });
+});
+
+function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    modalVideo.pause();
+    modalVideo.removeAttribute('src');
+    modalVideo.load();
+}
+
+modalClose.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+    }
+});
+</script>
+<div class="bottom-blur-bar"></div>
+</body>
+</html>
