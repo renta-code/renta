@@ -237,22 +237,8 @@ const modalClose = document.getElementById('videoModalClose');
 const modalBackdrop = document.querySelector('.video-modal-backdrop');
 
 items.forEach(item => {
-    const previewVideo = item.querySelector('video');
     const playBtn = item.querySelector('.video-play-btn');
     const fullVideoSrc = item.dataset.video;
-
-    item.addEventListener('mouseenter', () => {
-        previewVideo.currentTime = 0;
-        const playPromise = previewVideo.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {});
-        }
-    });
-
-    item.addEventListener('mouseleave', () => {
-        previewVideo.pause();
-        previewVideo.currentTime = 0;
-    });
 
     playBtn.addEventListener('click', (e) => {
         e.stopPropagation();
