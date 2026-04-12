@@ -91,24 +91,24 @@
                 </p>
             </div>
 
-            <div class="projects-gallery">
+<div class="projects-gallery">
 
-    <div class="video-item">
-        <video src="Videos/Video1.mp4" muted playsinline preload="metadata" loop></video>
+    <div class="video-item" data-video="Videos/Video1.mp4">
+        <video src="Videos/Video1.mp4" muted playsinline preload="metadata"></video>
         <button class="video-play-btn" aria-label="Воспроизвести видео">
             <span class="video-play-icon"></span>
         </button>
     </div>
 
-    <div class="video-item">
-        <video src="Videos/Video2.mp4" muted playsinline preload="metadata" loop></video>
+    <div class="video-item" data-video="Videos/Video2.mp4">
+        <video src="Videos/Video2.mp4" muted playsinline preload="metadata"></video>
         <button class="video-play-btn" aria-label="Воспроизвести видео">
             <span class="video-play-icon"></span>
         </button>
     </div>
 
-    <div class="video-item">
-        <video src="Videos/Video3.mp4" muted playsinline preload="metadata" loop></video>
+    <div class="video-item" data-video="Videos/Video3.mp4">
+        <video src="Videos/Video3.mp4" muted playsinline preload="metadata"></video>
         <button class="video-play-btn" aria-label="Воспроизвести видео">
             <span class="video-play-icon"></span>
         </button>
@@ -200,75 +200,58 @@
     </section>
 </div>
 
+<div class="video-modal" id="videoModal">
+    <div class="video-modal-backdrop"></div>
+
+    <div class="video-modal-content">
+        <button class="video-modal-close" id="videoModalClose" aria-label="Закрыть">×</button>
+        <video id="modalVideo" controls playsinline></video>
+    </div>
+</div>
+
 <script>
-const videoItems = document.querySelectorAll('.video-item');
+const items = document.querySelectorAll('.video-item');
+const modal = document.getElementById('videoModal');
+const modalVideo = document.getElementById('modalVideo');
+const modalClose = document.getElementById('videoModalClose');
+const modalBackdrop = document.querySelector('.video-modal-backdrop');
 
-videoItems.forEach(item => {
-    const video = item.querySelector('video');
+items.forEach(item => {
     const playBtn = item.querySelector('.video-play-btn');
-
-    function pauseAllExcept(currentItem) {
-        videoItems.forEach(otherItem => {
-            if (otherItem !== currentItem) {
-                const otherVideo = otherItem.querySelector('video');
-                otherVideo.pause();
-                otherVideo.currentTime = 0;
-                otherItem.classList.remove('is-playing');
-            }
-        });
-    }
-
-    function playVideo() {
-        pauseAllExcept(item);
-
-        video.muted = true;
-        video.playsInline = true;
-
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise
-                .then(() => {
-                    item.classList.add('is-playing');
-                })
-                .catch(() => {});
-        }
-    }
-
-    function pauseVideo() {
-        video.pause();
-        video.currentTime = 0;
-        item.classList.remove('is-playing');
-    }
+    const fullVideoSrc = item.dataset.video;
 
     playBtn.addEventListener('click', (e) => {
         e.stopPropagation();
 
-        if (video.paused) {
-            playVideo();
-        } else {
-            pauseVideo();
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+
+        modalVideo.src = fullVideoSrc;
+        modalVideo.currentTime = 0;
+        modalVideo.muted = false;
+
+        const playPromise = modalVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {});
         }
     });
+});
 
-    video.addEventListener('click', () => {
-        if (video.paused) {
-            playVideo();
-        } else {
-            pauseVideo();
-        }
-    });
+function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    modalVideo.pause();
+    modalVideo.removeAttribute('src');
+    modalVideo.load();
+}
 
-    video.addEventListener('ended', () => {
-        item.classList.remove('is-playing');
-    });
+modalClose.addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', closeModal);
 
-    video.addEventListener('pause', () => {
-        item.classList.remove('is-playing');
-    });
-
-    video.addEventListener('play', () => {
-        item.classList.add('is-playing');
-    });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+    }
 });
 </script>
 <div class="bottom-blur-bar"></div>
