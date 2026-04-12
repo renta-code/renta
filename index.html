@@ -91,31 +91,22 @@
                 </p>
             </div>
 
-<div class="projects-gallery">
+            <div class="projects-gallery">
 
-    <div class="video-item" data-video="Videos/Video1.mp4">
-        <video src="Videos/Video1.mp4" muted playsinline preload="metadata"></video>
-        <button class="video-play-btn" aria-label="Воспроизвести видео">
-            <span class="video-play-icon"></span>
-        </button>
-    </div>
+                <div class="video-item" data-video="Videos/Video1.mp4">
+                    <video src="Videos/Video1.mp4" muted playsinline preload="metadata" loop></video>
+                </div>
 
-    <div class="video-item" data-video="Videos/Video2.mp4">
-        <video src="Videos/Video2.mp4" muted playsinline preload="metadata"></video>
-        <button class="video-play-btn" aria-label="Воспроизвести видео">
-            <span class="video-play-icon"></span>
-        </button>
-    </div>
+                <div class="video-item" data-video="Videos/Video2.mp4">
+                    <video src="Videos/Video2.mp4" muted playsinline preload="metadata" loop></video>
+                </div>
 
-    <div class="video-item" data-video="Videos/Video3.mp4">
-        <video src="Videos/Video3.mp4" muted playsinline preload="metadata"></video>
-        <button class="video-play-btn" aria-label="Воспроизвести видео">
-            <span class="video-play-icon"></span>
-        </button>
-    </div>
+                <div class="video-item" data-video="Videos/Video3.mp4">
+                    <video src="Videos/Video3.mp4" muted playsinline preload="metadata" loop></video>
+                </div>
 
-</div>
-            
+            </div>
+
         </div>
     </section>
 
@@ -217,15 +208,25 @@ const modalClose = document.getElementById('videoModalClose');
 const modalBackdrop = document.querySelector('.video-modal-backdrop');
 
 items.forEach(item => {
-    const playBtn = item.querySelector('.video-play-btn');
+    const previewVideo = item.querySelector('video');
     const fullVideoSrc = item.dataset.video;
 
-    playBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+    item.addEventListener('mouseenter', () => {
+        previewVideo.currentTime = 0;
+        const playPromise = previewVideo.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+        }
+    });
 
+    item.addEventListener('mouseleave', () => {
+        previewVideo.pause();
+        previewVideo.currentTime = 0;
+    });
+
+    item.addEventListener('click', () => {
         modal.classList.add('is-open');
         document.body.style.overflow = 'hidden';
-
         modalVideo.src = fullVideoSrc;
         modalVideo.currentTime = 0;
         modalVideo.muted = false;
