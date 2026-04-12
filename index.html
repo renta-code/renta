@@ -94,17 +94,16 @@
             <div class="projects-gallery">
 
                 <div class="video-item" data-video="Videos/Video1.mp4">
-                    <video src="Videos/Video1.mp4" muted playsinline preload="metadata" loop></video>
-                </div>
+    <video src="Videos/Video1.mp4" muted playsinline autoplay preload="auto" loop></video>
+</div>
 
-                <div class="video-item" data-video="Videos/Video2.mp4">
-                    <video src="Videos/Video2.mp4" muted playsinline preload="metadata" loop></video>
-                </div>
+<div class="video-item" data-video="Videos/Video2.mp4">
+    <video src="Videos/Video2.mp4" muted playsinline autoplay preload="auto" loop></video>
+</div>
 
-                <div class="video-item" data-video="Videos/Video3.mp4">
-                    <video src="Videos/Video3.mp4" muted playsinline preload="metadata" loop></video>
-                </div>
-
+<div class="video-item" data-video="Videos/Video3.mp4">
+    <video src="Videos/Video3.mp4" muted playsinline autoplay preload="auto" loop></video>
+</div>
             </div>
 
         </div>
@@ -207,22 +206,35 @@ const modalVideo = document.getElementById('modalVideo');
 const modalClose = document.getElementById('videoModalClose');
 const modalBackdrop = document.querySelector('.video-modal-backdrop');
 
+const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
 items.forEach(item => {
     const previewVideo = item.querySelector('video');
     const fullVideoSrc = item.dataset.video;
 
-    item.addEventListener('mouseenter', () => {
-        previewVideo.currentTime = 0;
+    previewVideo.muted = true;
+    previewVideo.playsInline = true;
+    previewVideo.loop = true;
+
+    if (isTouchDevice) {
         const playPromise = previewVideo.play();
         if (playPromise !== undefined) {
             playPromise.catch(() => {});
         }
-    });
+    } else {
+        item.addEventListener('mouseenter', () => {
+            previewVideo.currentTime = 0;
+            const playPromise = previewVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+            }
+        });
 
-    item.addEventListener('mouseleave', () => {
-        previewVideo.pause();
-        previewVideo.currentTime = 0;
-    });
+        item.addEventListener('mouseleave', () => {
+            previewVideo.pause();
+            previewVideo.currentTime = 0;
+        });
+    }
 
     item.addEventListener('click', () => {
         modal.classList.add('is-open');
